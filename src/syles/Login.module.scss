@@ -1,0 +1,31 @@
+.loginContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginForm {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    > input {
+        margin-top: 1em;
+        font-size: 1.5em;
+        padding-left: 1em;
+        border: 1px solid grey;
+        border-radius: 10px;
+    }
+    > div {
+        display: flex;
+        justify-content: center;
+        > button {
+        width: 5em;
+        margin-top: 1em;
+        font-size: 1.5em;
+        text-align: center;
+        border-radius: 10px;
+        border: none;
+        }
+    }
+}
+
