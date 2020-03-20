@@ -1,10 +1,9 @@
-
-
 import {LOGGING, LOGIN_ERROR, LOGIN_SUCCESS} from '../actions/loginActions';
 
 const initialState = {
     isButtonLocked: false,
-    isLoginSuccess: null
+    isLoginSuccess: null,
+    errorLoginMessage: null
 }
 
 export default (state = initialState, action) => {
@@ -12,19 +11,19 @@ export default (state = initialState, action) => {
         case LOGGING: 
             return {
                 ...state,
-                isLoginSuccess: null,
                 isButtonLocked: true
         }
         case LOGIN_ERROR:
             return {
                 ...state,
-                isLoginSuccess: false,
-                isButtonLocked: false
+                isLoginSuccess: "FAILED",
+                isButtonLocked: false,
+                errorLoginMessage: action.errorLoginMessage
             };
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                isLoginSuccess: true,
+                isLoginSuccess: "SUCCESS",
                 isButtonLocked: false
             }
         default:

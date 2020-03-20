@@ -14,19 +14,21 @@ export const handleLoginSuccess = () => ({
 });
 
 export const handleLoginError = () => ({
-    type: LOGIN_ERROR
+    type: LOGIN_ERROR,
+    errorLoginMessage: "User not exist. Log in failed"
 });
 
 export const login = (body) => async dispatch => {
     dispatch(tryLogin());
 
     await axios.post('http://localhost:4000/user/login', {
+        userName: body.userName,
         email: body.email,
         password: body.password
     }).then(response => {
         console.log(response);
         dispatch(handleLoginSuccess());
-        setUserSession(response.token, response.email)
+        setUserSession(response);
     }).catch(error => {
         console.log(error);
         dispatch(handleLoginError());
