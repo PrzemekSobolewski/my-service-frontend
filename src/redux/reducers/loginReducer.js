@@ -3,7 +3,8 @@ import {LOGGING, LOGIN_ERROR, LOGIN_SUCCESS} from '../actions/loginActions';
 const initialState = {
     isButtonLocked: false,
     isLoginSuccess: null,
-    errorLoginMessage: null
+    errorLoginMessage: null,
+    userName: null
 }
 
 export default (state = initialState, action) => {
@@ -24,7 +25,8 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isLoginSuccess: "SUCCESS",
-                isButtonLocked: false
+                isButtonLocked: false,
+                userName: action.userName
             }
         default:
             return state;

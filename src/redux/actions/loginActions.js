@@ -1,5 +1,4 @@
 import axios from "axios/index";
-import {setUserSession} from '../../utils/Common'
 
 export const LOGGING = 'LOGGING';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
@@ -9,8 +8,9 @@ export const tryLogin = () => ({
     type: LOGGING
 });
 
-export const handleLoginSuccess = () => ({
-    type: LOGIN_SUCCESS
+export const handleLoginSuccess = (response) => ({
+    type: LOGIN_SUCCESS,
+    userName: response.data.userName
 });
 
 export const handleLoginError = () => ({
@@ -18,17 +18,16 @@ export const handleLoginError = () => ({
     errorLoginMessage: "User not exist. Log in failed"
 });
 
-export const login = (body) => async dispatch => {
+export const login = (body, setCookies) => async dispatch => {
     dispatch(tryLogin());
 
     await axios.post('http://localhost:4000/user/login', {
-        userName: body.userName,
         email: body.email,
         password: body.password
     }).then(response => {
         console.log(response);
+        setCookies('token', response.data.token, {path: '/'});
         dispatch(handleLoginSuccess());
-        setUserSession(response);
     }).catch(error => {
         console.log(error);
         dispatch(handleLoginError());
