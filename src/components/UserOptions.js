@@ -8,7 +8,7 @@ const UserOptions = () => {
     if(cookies.token !== undefined) {
         return (
             <div className={'navUserAccount'}>
-                <Link to={'/'}> <FaUser/> </Link>
+                <Link to={'/userDashboard'}> <FaUser/> </Link>
             </div>
         )} else {
         return(

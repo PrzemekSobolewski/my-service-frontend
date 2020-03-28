@@ -11,12 +11,13 @@ const Login = () => {
   const loginState = useSelector(state => state.login);
   const [cookies, setCookies] = useCookies(['token']);
   const history = useHistory();
-  useEffect(() => {
+  
+  React.useEffect(() => {
     if(cookies.token !== undefined) {
       history.push('/');
     }
   })
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const body = {
@@ -33,8 +34,8 @@ const Login = () => {
   return (
     <div className={'loginContent'}>
        <form id={'loginForm'} className={'loginForm'} method={'POST'} onSubmit={handleSubmit}>
-        <input type={'text'} placeholder={'Email'} name={'email'} value={email} onChange={e => setEmail(e.target.value)}/>
-        <input type={'password'} placeholder={'Password'} name={'password'} value={password} onChange={e => setPassword(e.target.value)}/>
+        <input type={"text"} id={'email'} placeholder={'Email'} name={'email'} value={email} onChange={e => setEmail(e.target.value)}/>
+        <input type={'password'} id={'password'} placeholder={'Password'} name={'password'} value={password} onChange={e => setPassword(e.target.value)}/>
         <div><button disabled={loginState.isButtonLocked} type={'submit'}> Login </button></div>
        </form>
     </div>

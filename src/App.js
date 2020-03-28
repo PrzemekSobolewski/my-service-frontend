@@ -11,7 +11,8 @@ import {
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
-import UserOptions from './components/UserOptions'
+import UserDashboard from './pages/UserDashboard';
+import UserOptions from './components/UserOptions';
 
 const App = () => {
   return(
@@ -25,6 +26,7 @@ const App = () => {
       <div className="content">
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path='/userdashboard' component={UserDashboard} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
         </Switch>
