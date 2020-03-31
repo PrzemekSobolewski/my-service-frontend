@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import { useHistory } from "react-router-dom";
-import { useCookies } from 'react-cookie';
+import Cookies from 'universal-cookie';
 
 const Home = () => {
   const history = useHistory();
-  const [cookies] = useCookies(['token']);
-
+  const cookies = new Cookies();
+ 
   useEffect(() => {
-    if(cookies.token === undefined) {
+    if(cookies.get('token') === undefined) {
       history.push('/login');
     }
   });

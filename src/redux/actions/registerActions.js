@@ -5,19 +5,19 @@ export const REGISTERING = "REGISTERING";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_ERROR = "REGISTER_ERROR";
 
-const tryRegister = () => ({
+export const tryRegister = () => ({
     type: REGISTERING
 });
 
-const handleRegisterSuccess = () => ({
+export const handleRegisterSuccess = () => ({
     type: REGISTER_SUCCESS
 });
 
-const handleRegisterError = () =>({
+export const handleRegisterError = () =>({
     type: REGISTER_ERROR
 });
 
-export const register = (body, setCookies) => async dispatch => {
+export const register = (body, cookies) => async dispatch => {
     dispatch(tryRegister());
 
     await axios.post('http://localhost:4000/user/signup', {
@@ -27,7 +27,7 @@ export const register = (body, setCookies) => async dispatch => {
     }).then(response => {
         console.log(response);
         dispatch(handleRegisterSuccess);
-        dispatch(login(body, setCookies));
+        dispatch(login(body, cookies));
     }).catch(error => {
         console.log(error);
         dispatch(handleRegisterError());

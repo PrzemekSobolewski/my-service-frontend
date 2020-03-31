@@ -2,18 +2,19 @@ import React, {useState, useEffect} from 'react';
 import * as registerActions from '../redux/actions/registerActions';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import { useCookies } from 'react-cookie';
+import Cookies from 'universal-cookie';
+
 const Register = () => {
   const dispatch = useDispatch();
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const registerState = useSelector(state => state.register);
-  const [cookies, setCookies] = useCookies(['token']);
   const history = useHistory();
+  const cookies = new Cookies();
 
   useEffect(() => {
-    if(cookies.token !== undefined) {
+    if(cookies.get('token') !== undefined) {
       history.push('/');
     }
   })
@@ -26,7 +27,7 @@ const Register = () => {
       password: password
     }
     if ((email.trim().length || password.trim().length || userName.trim().length) !== 0) {
-      dispatch(registerActions.register(body, setCookies));
+      dispatch(registerActions.register(body, cookies));
     } else {
       alert("Empty field. Please fill all fields");
     }

@@ -1,9 +1,9 @@
 import {REGISTERING, REGISTER_SUCCESS, REGISTER_ERROR} from '../actions/registerActions';
 
-const initialState = () => ({
+const initialState = {
     isButtonLocked: false,
     isRegisterSuccess: null
-});
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -16,13 +16,13 @@ export default (state = initialState, action) => {
             return{
                 ...state,
                 isButtonLocked: false,
-                isRegisterSuccess: false
+                isRegisterSuccess: 'FAILED'
             }
         case REGISTER_SUCCESS:
             return {
                 ...state,
                 isButtonLocked: false,
-                isRegisterSuccess: true
+                isRegisterSuccess: 'SUCCESS'
             }
         default:
             return state;
