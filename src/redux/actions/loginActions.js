@@ -26,7 +26,7 @@ export const login = (body, cookies) => async dispatch => {
     }).then(response => {
         console.log(response);
         cookies.set('token', response.data.token, {path: '/'});
-        dispatch(handleLoginSuccess());
+        dispatch(handleLoginSuccess(response));
     }).catch(error => {
         console.log(error);
         dispatch(handleLoginError());
