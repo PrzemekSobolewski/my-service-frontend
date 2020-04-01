@@ -27,6 +27,7 @@ export const register = (body, cookies) => async dispatch => {
     }).then(response => {
         console.log(response);
         dispatch(handleRegisterSuccess);
+    }).then(() => {
         dispatch(login(body, cookies));
     }).catch(error => {
         console.log(error);

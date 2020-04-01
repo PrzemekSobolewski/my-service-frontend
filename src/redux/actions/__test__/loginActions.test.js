@@ -75,6 +75,7 @@ describe('async login action', () => {
 
         return store.dispatch(loginActions.login(body, cookies)).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
+            expect(cookies.get('token')).toBeDefined();
         })
     })
 });
