@@ -36,9 +36,9 @@ const Register = () => {
   return (
     <div className={'registerContent'}>
        <form id={'registerForm'} className={'registerForm'} method={'POST'} onSubmit={handleSubmit}>
-        <input type={'text'} placeholder={'User Name'} name={'userName'} value={userName} onChange={e => setUserName(e.target.value)}/>
-        <input type={'text'} placeholder={'Email'} name={'email'} value={email} onChange={e => setEmail(e.target.value)}/>
-        <input type={'password'} placeholder={'Password'} name={'password'} value={password} onChange={e => setPassword(e.target.value)}/>
+        <input id={'userName'} type={'text'} placeholder={'User Name'} name={'userName'} value={userName} onChange={e => setUserName(e.target.value)}/>
+        <input id={'email'} type={'text'} placeholder={'Email'} name={'email'} value={email} onChange={e => setEmail(e.target.value)}/>
+        <input id={'password'} type={'password'} placeholder={'Password'} name={'password'} value={password} onChange={e => setPassword(e.target.value)}/>
         <div><button disabled={registerState.isButtonLocked} type={'submit'}> Create Account </button></div>
        </form>
     </div>

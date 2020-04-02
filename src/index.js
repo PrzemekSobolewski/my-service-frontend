@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     register: registerReducer
   });
   
-  const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
+const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
     <Provider store={store}>

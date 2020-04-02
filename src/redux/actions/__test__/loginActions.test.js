@@ -2,7 +2,7 @@ import * as loginActions from '../loginActions';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Cookies from 'universal-cookie';
-import moxios from 'moxios'
+import moxios from 'moxios';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

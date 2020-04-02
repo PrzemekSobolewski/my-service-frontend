@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import * as loginActions from '../redux/actions/loginActions';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import Cookies from 'universal-cookie';
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -10,13 +9,12 @@ const Login = (props) => {
   const [password, setPassword] = useState('');
   const loginState = useSelector(state => state.login);
   const history = useHistory();
-  const cookies = new Cookies();
 
   useEffect(() => {
-    if(cookies.get('token') !== undefined) {
+    if(props.cookie.get('token') !== undefined) {
       history.push('/');
     }
-  })
+  });
  
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +23,7 @@ const Login = (props) => {
       password: password
     }
     if ((email.trim().length || password.trim().length) !== 0) {
-      dispatch(loginActions.login(body, cookies));
+      dispatch(loginActions.login(body, props.cookie));
     } else {
       alert("Empty field. Please fill all fields");
     }
